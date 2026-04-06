@@ -10,30 +10,22 @@ public class App {
     public static void main(String[] args) {
         System.out.println("--- Starting Hibernate CRUD Operations ---");
 
-        // Step 1: Insert multiple Product records
         System.out.println("\n[1] Inserting new products...");
         int p1Id = addProduct("Laptop", "High-performance gaming laptop", 1200.50, 10);
         int p2Id = addProduct("Smartphone", "Latest gen 5G smartphone", 800.00, 20);
         int p3Id = addProduct("Headphones", "Noise-cancelling wireless headphones", 150.00, 50);
 
-        // Step 2: Retrieve a product using its id
         System.out.println("\n[2] Retrieving product with ID " + p1Id + "...");
         getProduct(p1Id);
 
-        // Step 3: Update the price or quantity of any selected product
         System.out.println("\n[3] Updating quantity and price of product with ID " + p2Id + "...");
         updateProduct(p2Id, 750.00, 15);
-        getProduct(p2Id); // Verify update
-
-        // Step 4: Delete a product record by id if it is discontinued
+        getProduct(p2Id);
         System.out.println("\n[4] Deleting discontinued product with ID " + p3Id + "...");
         deleteProduct(p3Id);
-
-        // View all remaining products to verify the entire flow
         System.out.println("\n--- Remaining Products in Database ---");
         listAllProducts();
 
-        // Close the SessionFactory
         HibernateUtil.getSessionFactory().close();
         System.out.println("\n--- Execution Completed ---");
     }
